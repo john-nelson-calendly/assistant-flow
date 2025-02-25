@@ -1,1 +1,57 @@
-The crew should be an assistant.  please research CrewAI Assistants, or CrewAI Executive Assistants, or AI Assistants with CrewAI
+I am the Author.  Please use the following information for the Git config
+My name is John Nelson
+My email address is john.nelson@calendly.com
+My github handle is john-nelson-calendly
+
+
+Background: This repo is a sample CrewAI flow that is for a Meeting Assistant.
+I don't want a meeting assistant.  I want a Personal Assistant.
+
+Objective: Please rename/refactor all references to meeting assistant and replace with personal assistant
+This will not be an exact match.  Please search case insensitive
+
+For example... 
+
+    @start()
+    def load_meeting_notes(self):
+        print("Loading Meeting Notes")
+        print("Current working directory:", os.getcwd())
+
+        with open("meeting_notes.txt", "r") as file:
+            self.state.transcript = file.read()
+
+    @listen(load_meeting_notes)
+    def generate_tasks_from_meeting_transcript(self):
+        print("Kickoff the Meeting Assistant Crew")
+        output = (
+            MeetingAssistantCrew()
+            .crew()
+            .kickoff(inputs={"transcript": self.state.transcript})
+        )
+
+        tasks = output["tasks"]
+        print("TASKS:", tasks)
+        self.state.tasks = tasks
+
+would turn into...
+
+    @start()
+    def load_personal_notes(self):
+        print("Loading Personal Notes")
+        print("Current working directory:", os.getcwd())
+
+        with open("personal_notes.txt", "r") as file:
+            self.state.transcript = file.read()
+
+    @listen(load_personal_notes)
+    def generate_tasks_from_personal_notes(self):
+        print("Kickoff the Personal Assistant Crew")
+        output = (
+            PersonalAssistantCrew()
+            .crew()
+            .kickoff(inputs={"transcript": self.state.transcript})
+        )
+
+        tasks = output["tasks"]
+        print("TASKS:", tasks)
+        self.state.tasks = tasks

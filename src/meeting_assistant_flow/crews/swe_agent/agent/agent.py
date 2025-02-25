@@ -25,7 +25,7 @@ model = Model.OPENAI
 if model == Model.OPENAI:
     client = ChatOpenAI(
         api_key=os.environ["OPENAI_API_KEY"],  # type: ignore
-        model="gpt-4o-min",
+        model="gpt-4o-mini",
     )
 else:
     raise ValueError(f"Invalid model: {model}")
