@@ -11,15 +11,18 @@ def read_user_input(
     prompt: str,
     metavar: str,
     validator: t.Callable[[str], InputType],
+    default: t.Optional[str] = None,
 ) -> InputType:
     """Read user input."""
     while True:
-        value = input(f"{prompt} > ")
+        value = input(f"{prompt} (default: {default}) > ").strip()
+        if not value:
+            value = default  # Use default if input is empty
+
         try:
             return validator(value)
         except Exception as e:
             print(f"Invalid value for `{metavar}` error parsing `{value}`; {e}")
-
 
 def _github_repository_name_validator(name: str) -> t.Tuple[str, str]:
     """Validate github repository name."""
@@ -62,6 +65,7 @@ def from_github() -> t.Tuple[str, str]:
     """Take input from github."""
     owner, name = read_user_input(
         prompt="Enter github repository name",
+        default="john-nelson-calendly/assistant-flow",
         metavar="github repository name",
         validator=_github_repository_name_validator,
     )
@@ -69,6 +73,7 @@ def from_github() -> t.Tuple[str, str]:
         f"{owner}/{name}",
         read_user_input(
             prompt="Enter github issue ID or description or path to the file containing description",
+            default="/Users/john.nelson/workspace/assistant-flow/src/meeting_assistant_flow/crews/swe_agent/issue.txt",
             metavar="github issue",
             validator=_create_github_issue_validator(
                 owner=owner,
