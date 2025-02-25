@@ -5,10 +5,9 @@ My github handle is john-nelson-calendly
 
 
 Background: This repo is a sample CrewAI flow that is for a Meeting Assistant.
-I don't want a meeting assistant.  I want a Personal Assistant.
+I don't want a Meeting Assistant.  I want a Personal Assistant.
 
-Objective: Please rename/refactor all references to meeting assistant and replace with personal assistant
-This will not be an exact match.  Please search case insensitive
+Objective: Please rename/refactor all references to Meeting Assistant and replace with Personal Assistant
 
 For example... 
 

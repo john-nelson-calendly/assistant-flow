@@ -27,8 +27,9 @@ def main() -> None:
     git_commands = [
         f"checkout -b {branch_name}",
         "add -u",
-        "config --global user.email 'random@gmail.com'",
-        "config --global user.name 'random'",
+        "config --global user.email 'john.nelson@calendly.com'",
+        "config --global user.name 'john-nelson-calendly'",        
+        "config --global --add safe.directory /home/user/assistant-flow",        
         f"commit -m '{issue}'",
         f"push --set-upstream origin {branch_name}",
     ]
