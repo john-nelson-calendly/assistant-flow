@@ -1,0 +1,12 @@
+---
+fetch_active_tasks_task:
+  description: 'Fetch active tasks from Jira using the JQL: status not in (Done, Canceled).'
+  expected_output: Raw response containing active tasks from Jira.
+  async_execution: false
+  agent: task_fetcher
+authenticate_jira_task:
+  description: Authenticate with Jira API using the provided credentials to ensure
+    secure access.
+  expected_output: Authentication successful, ready to fetch tasks from Jira.
+  async_execution: false
+  agent: jira_authenticator
